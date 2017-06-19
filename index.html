@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title>newtab guru</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="bg">
+    <h1 id="advice"></h1>
+
+    <!--Also try with ajax  -->
+    <!--ask sishir what is safest method  -->
+    <!--video: https://www.youtube.com/playlist?list=PLYxzS__5yYQlWil-vQ-y7NR902ovyq1Xi  -->
+    <!--Solution with XML https://stackoverflow.com/questions/20048483/insert-into-mysql-from-chrome-extension  -->
+    <!--Get data from serverhttp://www.freewebmasterhelp.com/tutorials/phpmysql/4  -->
+    <!--Udemy course on extension -->
+    <form class="" action="http://localhost/test/connect.php" method="POST">
+      <input type="text" name="advice" placeholder="type your advice">
+      <!-- give special name in submit that needs to be send in order for the request to be processes to disallow hackers -->
+      <input type="submit" name="submitSend" value="Go">
+    </form>
+
+  </div>
+
+  <script src="jquery-3.2.1.js"></script>
+  <script src="app.js"></script>
+
+</body>
+
+</html>
+
+<!--
+Might be best solution for ajax:
+https://stackoverflow.com/questions/34778045/ajax-with-chrome-extension
+Might try ajax: https://stackoverflow.com/questions/6800988/using-jquery-ajax-in-a-google-chrome-extension
+
+use https server
+- Use JSON.parse to parse the string data from the server to a javascript object: https://www.w3schools.com/js/js_json_parse.asp
+- Use last example for xmlhttp save request with innerText instead of innerHtml
+https://developer.chrome.com/extensions/xhr
+
+How to use with PHP:https://www.w3schools.com/xml/ajax_php.asp
+
+PHP Script and Email en masse from Server:
+http://www.freewebmasterhelp.com/tutorials/phpmysql
+
+
+-->

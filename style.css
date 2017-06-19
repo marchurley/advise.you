@@ -1,0 +1,23 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 300%;
+  }
+
+h1 {
+  padding-top: 20%;
+}

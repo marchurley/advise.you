@@ -1,0 +1,46 @@
+{
+
+    "manifest_version": 2,
+    "name": "newtab guru",
+    "version": "1.0",
+
+    "description": "Wisdom is taking your own advice. Open a new tab and see reminders, thoughts, quotes, to-dos, new words to learn etc.",
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+
+    "browser_action": {
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        },
+        "default_title": "newtab guru"
+    },
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "author": "Marc Hurley",
+
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+
+    "options_page": "options.html",
+
+    "permissions": [
+        "unlimitedStorage",
+        "tabs",
+        "background",
+        "http://*/*",
+        "https://*/*",
+        "http://localhost/*",
+        "http://localhost:100/*"
+    ]
+
+}
