@@ -45,24 +45,24 @@ $(document).ready(function() {
   //POST ADVICE on CLICK
   $("#addAdviceSend").click(function() {
     var advice = $("#adviceSend").val();
-    var category = $("#categorySend").val();
+    // var category = $("#categorySend").val();
     var priority = $("#prioritySend").val();
-    if (advice.length === 0 && category.length === 0 && priority.length === 0) {
-      alert("Please write down your advice and select category & priority");
-    } else if (advice.length === 0 && priority.length === 0){
+    if (advice.length === 0 && priority.length === 0) {
       alert("Please write down your advice and select a priority");
-    } else if (advice.length === 0 && category.length === 0){
-      alert("Please write down your advice and select a category");
-    } else if (category.length === 0 && priority.length === 0){
-      alert("Please select category and priority");
-    } else if (category.length === 0){
-      alert("Please select a category");
+    // } else if (advice.length === 0 && priority.length === 0){
+    //   alert("Please write down your advice and select a priority");
+    // } else if (advice.length === 0 && category.length === 0){
+    //   alert("Please write down your advice and select a category");
+    // } else if (category.length === 0 && priority.length === 0){
+    //   alert("Please select category and priority");
+    // } else if (category.length === 0){
+    //   alert("Please select a category");
     } else if (priority.length === 0){
       alert("Please select a priority");
     } else if (advice.length === 0){
       alert("Please select an advice");
-    } else if (advice.length !== 0 && category.length !== 0 && priority.length !== 0) {
-      ajaxAddAdvice(advice, category, priority);
+    } else if (advice.length !== 0 && priority.length !== 0) {
+      ajaxAddAdvice(advice, priority);
       $("#adviceSend").val('');
     }
   });
@@ -73,76 +73,76 @@ $(document).ready(function() {
     if (event.which == 13) {
       event.preventDefault();
       var advice = $("#adviceSend").val();
-      var category = $("#categorySend").val();
+      // var category = $("#categorySend").val();
       var priority = $("#prioritySend").val();
-      if (advice.length === 0 && category.length === 0 && priority.length === 0) {
-        alert("Please write down your advice and select category & priority");
-      } else if (advice.length === 0 && priority.length === 0){
+      if (advice.length === 0 && priority.length === 0) {
         alert("Please write down your advice and select a priority");
-      } else if (advice.length === 0 && category.length === 0){
-        alert("Please write down your advice and select a category");
-      } else if (category.length === 0 && priority.length === 0){
-        alert("Please select category and priority");
-      } else if (category.length === 0){
-        alert("Please select a category");
+      // } else if (advice.length === 0 && priority.length === 0){
+      //   alert("Please write down your advice and select a priority");
+      // } else if (advice.length === 0 && category.length === 0){
+      //   alert("Please write down your advice and select a category");
+      // } else if (category.length === 0 && priority.length === 0){
+      //   alert("Please select category and priority");
+      // } else if (category.length === 0){
+      //   alert("Please select a category");
       } else if (priority.length === 0){
         alert("Please select a priority");
       } else if (advice.length === 0){
         alert("Please select an advice");
-      } else if (advice.length !== 0 && category.length !== 0 && priority.length !== 0) {
-        ajaxAddAdvice(advice, category, priority);
+      } else if (advice.length !== 0 && priority.length !== 0) {
+        ajaxAddAdvice(advice, priority);
         $("#adviceSend").val('');
       }
     }
   });
   //////////////////////////////////////////
   //OPEN POPUP on CLICK
-  $('#addCategory').on('click', function() {
-    if ($(this).hasClass('selected')) {
-      deselect($(this));
-    } else {
-      $(this).addClass('selected');
-      $('.pop').slideFadeToggle();
-    }
-  });
+  // $('#addCategory').on('click', function() {
+  //   if ($(this).hasClass('selected')) {
+  //     deselect($(this));
+  //   } else {
+  //     $(this).addClass('selected');
+  //     $('.pop').slideFadeToggle();
+  //   }
+  // });
   //////////////////////////////////////////
-  //ADD CATEGORY on CLICK
-  $("#sendCategory").click(function() {
-    var category = $("#newCategory").val();
-    $("#newCategory").val('');
-    ajaxAddCategory(category);
-    $("#displayNewCat").text(category + " was added");
-  });
+  // //ADD CATEGORY on CLICK
+  // $("#sendCategory").click(function() {
+  //   var category = $("#newCategory").val();
+  //   $("#newCategory").val('');
+  //   ajaxAddCategory(category);
+  //   $("#displayNewCat").text(category + " was added");
+  // });
   //////////////////////////////////////////
   //ADD CATEGORY on ENTER
-  $("#newCategory").keypress(function(event) {
-    var category = $("#newCategory").val();
-    if (event.which == 13) {
-      event.preventDefault();
-      $("#newCategory").val('');
-      ajaxAddCategory(category);
-      $("#displayNewCat").text(category + " was added");
-    }
-  });
+  // $("#newCategory").keypress(function(event) {
+  //   var category = $("#newCategory").val();
+  //   if (event.which == 13) {
+  //     event.preventDefault();
+  //     $("#newCategory").val('');
+  //     ajaxAddCategory(category);
+  //     $("#displayNewCat").text(category + " was added");
+  //   }
+  // });
   //////////////////////////////////////////
   //CLOSE POPUP on CLICK
-  $('#closeNewCat').on('click', function() {
-    $("#displayNewCat").text('');
-    if ($(this).hasClass('!selected')) {
-      deselect($(this));
-    } else {
-      $(this).addClass('!selected');
-      $('.pop').slideFadeToggle();
-    }
-  });
+  // $('#closeNewCat').on('click', function() {
+  //   $("#displayNewCat").text('');
+  //   if ($(this).hasClass('!selected')) {
+  //     deselect($(this));
+  //   } else {
+  //     $(this).addClass('!selected');
+  //     $('.pop').slideFadeToggle();
+  //   }
+  // });
   //////////////////////////////////////////
   //CLOSE POPUP on ESC
-  $('.pop').keyup(function(e) {
-    if (e.keyCode === 27) {
-      $('#closeNewCat').click();
-      $('#newCategory').val('');
-    }
-  });
+  // $('.pop').keyup(function(e) {
+  //   if (e.keyCode === 27) {
+  //     $('#closeNewCat').click();
+  //     $('#newCategory').val('');
+  //   }
+  // });
   //////////////////////////////////////////
   //FORGET PASSWORD IS CLICKED
   $("#forgotPassword, #forgotPasswordRegister").on('click', function(e) {
@@ -406,42 +406,39 @@ function ajaxGetAllAdvice() {
 //DISPLAY & EDIT GET REQUEST
 //
 function loadAdvice(data, init) {
-  $('#showAdvice, #categorySend, #prioritySend').empty(); //clear all advice, category & priority
-
+  $('#showAdvice, #prioritySend').empty(); //clear all advice, category & priority
+  // $("#categorySend").empty();
   var initPriority = init.Priorities;
-  var initCategories = init.Categories;
-
   var priorityOption = '<option value="">Select a Priority</option>';
   for (var i = 0; i < initPriority.length; i++) {
     priorityOption += '<option value="' + initPriority[i] + '">' + initPriority[i] + '</option>';
   }
   $('#prioritySend').append(priorityOption);
 
-  var categoryOption = '<option value="">Select a Category</option>';
-  for (var x = 0; x < initCategories.length; x++) {
-    categoryOption += '<option value="' + initCategories[x] + '">' + initCategories[x] + '</option>';
-  }
-  $('#categorySend').append(categoryOption);
+  // var initCategories = init.Categories;
+  // var categoryOption = '<option value="">Select a Category</option>';
+  // for (var x = 0; x < initCategories.length; x++) {
+  //   categoryOption += '<option value="' + initCategories[x] + '">' + initCategories[x] + '</option>';
+  // }
+  // $('#categorySend').append(categoryOption);
 
   $.each(data, function(i) {
     //Show all advice in DOM
     var advice = '<td class="editable blue" id="adviceId' + data[i].id + '">' + data[i].advice + '</td>';
-    var categoryId = '<td class="editable" id="categoryId' + data[i].id + '">' + data[i].category_id + '</td>';
+    // var categoryId = '<td class="editable" id="categoryId' + data[i].id + '">' + data[i].category_id + '</td>';
     var priority = '<td class="editable" id="priorityId' + data[i].id + '">' + data[i].priority + '</td>';
     var edit = '<td class="!hide cursor" id="editId' + data[i].id + '">edit</td>';
     var save = '<td class="hide cursor" id="saveId' + data[i].id + '">save</td>';
     var deleteAdvice = '<td class="!hide cursor" id="deleteId' + data[i].id + '">delete</td>';
     var escapeEdit = '<td class="hide cursor" id="escapeId' + data[i].id + '">esc</td>';
-    var row = '<tr id="rowId' + data[i].id + '">' + advice + categoryId + priority + edit + save + deleteAdvice + escapeEdit + '</tr>';
+    var row = '<tr id="rowId' + data[i].id + '">' + advice + priority + edit + save + deleteAdvice + escapeEdit + '</tr>';
     $('#showAdvice').append(row);
-    //put dynamic ids in variables to use
-    // var editAdviceAndButton = '#editId' + data[i].id + ', #adviceId' + data[i].id + ', #categoryId' + data[i].id + ', #priorityId' + data[i].id;
     var editButton = '#editId' + data[i].id;
     var saveButton = '#saveId' + data[i].id;
     var deleteButton = '#deleteId' + data[i].id;
     var escapeButton = '#escapeId' + data[i].id;
     var editAdvice = '#adviceId' + data[i].id;
-    var editCategoryId = '#categoryId' + data[i].id;
+    // var editCategoryId = '#categoryId' + data[i].id;
     var editPriority = '#priorityId' + data[i].id;
     var editRow = '#rowId' + data[i].id;
     //Edit advice when edit button is clicked
@@ -451,7 +448,7 @@ function loadAdvice(data, init) {
       $(deleteButton).toggleClass("hide");
       $(escapeButton).toggleClass("hide");
       $(editAdvice).attr('contentEditable', true).selectText();
-      $(editCategoryId).attr('contentEditable', true);
+      // $(editCategoryId).attr('contentEditable', true);
       $(editPriority).attr('contentEditable', true);
     });
     //
@@ -465,9 +462,9 @@ function loadAdvice(data, init) {
       $(deleteButton).toggleClass("hide");
       $(escapeButton).toggleClass("hide");
       $(editAdvice).attr('contentEditable', false);
-      $(editCategoryId).attr('contentEditable', false);
+      // $(editCategoryId).attr('contentEditable', false);
       $(editPriority).attr('contentEditable', false);
-      ajaxEditAdvice(data, i);
+      ajaxEditAdvice(data, i, init);
     });
     //
     $(editRow).keypress(function(e) {
@@ -482,10 +479,10 @@ function loadAdvice(data, init) {
       $(deleteButton).toggleClass("hide");
       $(escapeButton).toggleClass("hide");
       $(editAdvice).attr('contentEditable', false);
-      $(editCategoryId).attr('contentEditable', false);
+      // $(editCategoryId).attr('contentEditable', false);
       $(editPriority).attr('contentEditable', false);
       $(editAdvice).text(data[i].advice);
-      $(editCategoryId).text(data[i].category_id);
+      // $(editCategoryId).text(data[i].category_id);
       $(editPriority).text(data[i].priority);
     });
     //
@@ -509,13 +506,13 @@ function loadAdvice(data, init) {
 //
 //POST AJAX REQUEST - ADD ADVICE
 //
-function ajaxAddAdvice(advice, category, priority) {
+function ajaxAddAdvice(advice, priority) {
   $.ajax({
     type: 'POST',
     url: authUrl + 'advice',
     data: {
       'advice': advice,
-      'category_id': category,
+      // 'category_id': category,
       'priority': priority
     },
     dataType: "json",
@@ -535,10 +532,10 @@ function ajaxAddAdvice(advice, category, priority) {
 //
 //POST/ID AJAX REQUEST - EDIT ADVICE
 //
-function ajaxEditAdvice(data, i) {
+function ajaxEditAdvice(data, i, init) {
   //Assign new advice content to variable
   var advice = $('#adviceId' + data[i].id).text();
-  var categoryId = $('#categoryId' + data[i].id).text();
+  // var categoryId = $('#categoryId' + data[i].id).text();
   var priority = $('#priorityId' + data[i].id).text();
   if ($.isNumeric(priority) && priority <= 5 && priority > 0) {
     $.ajax({
@@ -546,7 +543,7 @@ function ajaxEditAdvice(data, i) {
       url: authUrl + 'advice/' + data[i].id,
       data: {
         'advice': advice,
-        'category_id': categoryId,
+        // 'category_id': categoryId,
         'priority': priority
       },
       dataType: "json",
@@ -566,17 +563,16 @@ function ajaxEditAdvice(data, i) {
       url: authUrl + 'advice/' + data[i].id,
       data: {
         'advice': advice,
-        'category_id': categoryId,
+        // 'category_id': categoryId,
       },
       dataType: "json",
       success: function(response) {
         alert("Priority needs to be a number between 1 and 5");
-        loadAdvice(data);
+        ajaxGetAllAdvice();
       },
       error: function(response) {
         alert("Priority needs to be a number between 1 and 5");
-        loadAdvice(data);
-        console.log(3);
+        ajaxGetAllAdvice();
       }
     });
 
@@ -605,11 +601,11 @@ function ajaxDeleteAdvice(data, i) {
 //
 //POST CATEGORY REQUEST
 //
-function ajaxAddCategory(category) {
-  console.log(category);
-  console.log("finish code: send to server");
-  ajaxGetAllAdvice();
-}
+// function ajaxAddCategory(category) {
+//   console.log(category);
+//   console.log("finish code: send to server");
+//   ajaxGetAllAdvice();
+// }
 //////////////////////////////////////////
 //
 //DURSTENFELD SHUFFE
@@ -655,20 +651,20 @@ jQuery.fn.selectText = function() {
 //
 //SLIDE CATEGORY POPUP TOGGLE
 //
-$.fn.slideFadeToggle = function(easing, callback) {
-  return this.animate({
-    opacity: 'toggle',
-    height: 'toggle'
-  }, 'fast', easing, callback);
-};
+// $.fn.slideFadeToggle = function(easing, callback) {
+//   return this.animate({
+//     opacity: 'toggle',
+//     height: 'toggle'
+//   }, 'fast', easing, callback);
+// };
 //
 //DESELECT CATEGORY POPUP
 //
-function deselect(e) {
-  $('.pop').slideFadeToggle(function() {
-    e.removeClass('selected');
-  });
-}
+// function deselect(e) {
+//   $('.pop').slideFadeToggle(function() {
+//     e.removeClass('selected');
+//   });
+// }
 //
 //CHECK IF VALID EMAILADDRESS
 //
