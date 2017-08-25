@@ -1,27 +1,120 @@
 <html>
 
 <head>
-  <title>newtab guru</title>
+  <title>NewTab Guru</title>
+  <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Open+Sans:400,600" rel="stylesheet">
 </head>
 
 <body>
-  <div class="bg">
-    <h1 id="advice"></h1>
 
-    <!--Also try with ajax  -->
-    <!--ask sishir what is safest method  -->
-    <!--video: https://www.youtube.com/playlist?list=PLYxzS__5yYQlWil-vQ-y7NR902ovyq1Xi  -->
-    <!--Solution with XML https://stackoverflow.com/questions/20048483/insert-into-mysql-from-chrome-extension  -->
-    <!--Get data from serverhttp://www.freewebmasterhelp.com/tutorials/phpmysql/4  -->
-    <!--Udemy course on extension -->
-    <form class="" action="http://localhost/test/connect.php" method="POST">
-      <input type="text" name="advice" placeholder="type your advice">
-      <!-- give special name in submit that needs to be send in order for the request to be processes to disallow hackers -->
-      <input type="submit" name="submitSend" value="Go">
-    </form>
+  <div id="bgwhite"></div>
+
+  <div id="loginWindow">
+
+    <h1>Welcome</h1>
+
+    <section id="createAccount">
+      <h3>Create an Account</h3>
+      <form id="createForm" action="index.html" method="post">
+        <input id="createEmail" type="email" name="" placeholder="Your Email">
+        <p class="error" id="errorRegEmail"></p>
+        <p id="forgotPasswordRegister"><a href="#">Forgot password?</a></p>
+        <input id="choosePassword" type="password" name="" placeholder="Choose Password">
+        <p class="error" id="errorRegPassword">Password must be at least 6 characters</p>
+        <button type="submit" id="register-button">Register</button>
+      </form>
+      <h3 id="sending">
+        <img src="/img/loading.gif" id="sendingImg" height="42" width="42">
+        <p>Sending...</p>
+      </h3>
+      <h3 id="confirmEmail">
+        <p>Thank you!</p>
+        <p>To finish the registration, please confirm the email we just sent you.</p>
+      </h3>
+    </section>
+
+    <hr width="20%" noshade>
+
+    <section id="login">
+      <h3>Login</h3>
+      <form id="loginForm" action="index.html" method="post">
+        <input id="email" type="email" name="" placeholder="Email">
+        <input id="password" type="password" name="" placeholder="Password">
+        <p class="error" id="errorLogin">Email/Password not found</p>
+        <button type="submit" id="login-button">Login</button>
+        <p id="forgotPassword"><a href="#">Forgot password</a></p>
+      </form>
+    </section>
+
+    <section id="reset">
+      <h3>Reset Password</h3>
+      <form id="resetForm" action="index.html" method="post">
+        <input id="resetEmail" type="email" name="" placeholder="Email">
+        <p class="error" id="errorReset"></p>
+        <p class="error" id="noAccountBack"><a href="#">Please create an account</a></p>
+        <button type="submit" id="reset-button">Reset Password</button>
+      </form>
+      <h3 id="sendingReset">
+        <img src="/img/loading.gif" id="sendingImgReset" height="42" width="42">
+        <p id="sendingWord">Sending...</p>
+      </h3>
+      <p id="back"><a href="#">Back</a></p>
+    </section>
+
 
   </div>
+
+  <div class="bg" id="adviceWindow">
+    <div class="left"><p id="welcomeUser"></p><p id="logout">Logout</p></div>
+    <div class="right">
+      <section id="activateOverlay">
+        <p id="edit">+</p>
+      </section>
+    </div>
+    <div id="adviceSize">
+      <h1 id="advice"></h1>
+    </div>
+  </div>
+
+  <div id="overlayWindow">
+    <div class="left"></div>
+    <div class="right">
+      <section id="disableOverlay">
+        <p id="edit">-</p>
+      </section>
+    </div>
+
+    <h1>Manage your advice:</h1>
+
+    <div id="addAdvice">
+      <textarea type="text" id="adviceSend" placeholder="Enter your advice"></textarea>
+      <select id="categorySend"></select>
+      <select id="prioritySend" placeholder="Select Field..."></select>
+      <button type="submit" id="addAdviceSend">Add Advice</button>
+      <p id="or">or</p>
+      <a id="addCategory">Add a new category</a>
+    </div>
+
+    <div class="pop">
+      <input type="text" id="newCategory" placeholder="Enter your category">
+      <button type="button" id="sendCategory" name="button">Add Category</button>
+      <p id="closeNewCat">Close</p>
+      <p id="displayNewCat"></p>
+    </div>
+
+    <table id="showAdvice">
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+    <div id = "transp">
+      <p>&#10004</p>
+    </div>
+
+  </div>
+
 
   <script src="jquery-3.2.1.js"></script>
   <script src="app.js"></script>
@@ -31,19 +124,8 @@
 </html>
 
 <!--
-Might be best solution for ajax:
-https://stackoverflow.com/questions/34778045/ajax-with-chrome-extension
-Might try ajax: https://stackoverflow.com/questions/6800988/using-jquery-ajax-in-a-google-chrome-extension
-
-use https server
-- Use JSON.parse to parse the string data from the server to a javascript object: https://www.w3schools.com/js/js_json_parse.asp
-- Use last example for xmlhttp save request with innerText instead of innerHtml
-https://developer.chrome.com/extensions/xhr
-
-How to use with PHP:https://www.w3schools.com/xml/ajax_php.asp
-
-PHP Script and Email en masse from Server:
-http://www.freewebmasterhelp.com/tutorials/phpmysql
+FIX:
+- object empty when all advice through
 
 
 -->
