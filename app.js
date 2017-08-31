@@ -2,7 +2,6 @@
 //////////////////////////////////////////
 //////////////////////////////////////////
 //GLOBAL VARIABLES
-var advice = ["Testadvice1", "Testadvice2", "Testadvice3"];
 var image = ["img/img1.jpg", "img/img2.jpg", "img/img3.jpg"];
 var baseUrl = "http://localhost/adviseyou/adviseyou_backend/public/";
 var authUrl = baseUrl + "api/v1/";
@@ -49,17 +48,17 @@ $(document).ready(function() {
     var priority = $("#prioritySend").val();
     if (advice.length === 0 && priority.length === 0) {
       alert("Please write down your advice and select a priority");
-    // } else if (advice.length === 0 && priority.length === 0){
-    //   alert("Please write down your advice and select a priority");
-    // } else if (advice.length === 0 && category.length === 0){
-    //   alert("Please write down your advice and select a category");
-    // } else if (category.length === 0 && priority.length === 0){
-    //   alert("Please select category and priority");
-    // } else if (category.length === 0){
-    //   alert("Please select a category");
-    } else if (priority.length === 0){
+      // } else if (advice.length === 0 && priority.length === 0){
+      //   alert("Please write down your advice and select a priority");
+      // } else if (advice.length === 0 && category.length === 0){
+      //   alert("Please write down your advice and select a category");
+      // } else if (category.length === 0 && priority.length === 0){
+      //   alert("Please select category and priority");
+      // } else if (category.length === 0){
+      //   alert("Please select a category");
+    } else if (priority.length === 0) {
       alert("Please select a priority");
-    } else if (advice.length === 0){
+    } else if (advice.length === 0) {
       alert("Please select an advice");
     } else if (advice.length !== 0 && priority.length !== 0) {
       ajaxAddAdvice(advice, priority);
@@ -77,17 +76,17 @@ $(document).ready(function() {
       var priority = $("#prioritySend").val();
       if (advice.length === 0 && priority.length === 0) {
         alert("Please write down your advice and select a priority");
-      // } else if (advice.length === 0 && priority.length === 0){
-      //   alert("Please write down your advice and select a priority");
-      // } else if (advice.length === 0 && category.length === 0){
-      //   alert("Please write down your advice and select a category");
-      // } else if (category.length === 0 && priority.length === 0){
-      //   alert("Please select category and priority");
-      // } else if (category.length === 0){
-      //   alert("Please select a category");
-      } else if (priority.length === 0){
+        // } else if (advice.length === 0 && priority.length === 0){
+        //   alert("Please write down your advice and select a priority");
+        // } else if (advice.length === 0 && category.length === 0){
+        //   alert("Please write down your advice and select a category");
+        // } else if (category.length === 0 && priority.length === 0){
+        //   alert("Please select category and priority");
+        // } else if (category.length === 0){
+        //   alert("Please select a category");
+      } else if (priority.length === 0) {
         alert("Please select a priority");
-      } else if (advice.length === 0){
+      } else if (advice.length === 0) {
         alert("Please select an advice");
       } else if (advice.length !== 0 && priority.length !== 0) {
         ajaxAddAdvice(advice, priority);
@@ -354,12 +353,18 @@ function ajaxGetRandomAdvice() {
         $("#advice").css("font-size", "80px");
         $("#advice").html("To create your first advice, click on the '+' in the top right corner!");
       } else {
+        console.log(response);
         var advice = [];
         $.each(response, function(i) {
           advice.push(response[i].advice);
         });
-        var choosenAdvice = shuffle(advice); // array in random order
-        choosenAdvice = serve(advice); //array serve first entry
+        var priority = [];
+        $.each(response, function(i) {
+          priority.push(response[i].priority);
+        });
+        var weightedArray = randomOnPriority(advice, priority);
+        var choosenAdvice = shuffle(weightedArray); // array in random order
+        choosenAdvice = serve(weightedArray); //array serve first entry
         var adviceLength = choosenAdvice.length;
         if (adviceLength > 20) {
           $("#advice").css("font-size", "60px");
@@ -628,6 +633,25 @@ function serve(array) {
     return array[i];
   }
 }
+
+//////////////////////////////////////////
+//
+//RANDOMIZE BASED ON PRIORITY
+//
+function randomOnPriority(advice, priority) {
+
+  var weighed_list = [];
+  var reverse = priority.reverse();
+
+  for (var i = 0; i < reverse.length; i++) {
+    multiples = reverse[i];
+    for (var j = 0; j < multiples; j++) {
+      weighed_list.push(advice[i]);
+    }
+  }
+  return weighed_list;
+}
+
 //////////////////////////////////////////
 //
 //SELECT/FOCUS TEXT CONTENTEDITABLE
